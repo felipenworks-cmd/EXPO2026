@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistência Jurídica — Território Empreendedor</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="logo"><span class="logo-icone">🌱</span> Território Empreendedor</a>
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="cadastro.html">Cadastrar Negócio</a></li>
+        <li><a href="formalizacao.html">Formalização</a></li>
+        <li><a href="assistencia.html" class="ativo">Assistência</a></li>
+        <li><a href="guia.html">Guia</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h1 class="titulo-secao">Painel de Assistência Jurídica</h1>
+    <p class="subtitulo-secao">Acompanhe e conduza as solicitações de formalização MEI.</p>
+
+    <div class="aviso-demo">
+      🔒 Em uma versão em produção, esta área exigiria login da equipe de assistência.
+      Nesta versão acadêmica, o painel está aberto para fins de demonstração das funcionalidades.
+    </div>
+
+    <div class="abas">
+      <button class="aba-botao ativa" data-aba="solicitacoes">Solicitações MEI</button>
+      <button class="aba-botao" data-aba="sugestoes">Cadastros sugeridos</button>
+    </div>
+
+    <!-- ---------- ABA: Solicitações MEI ---------- -->
+    <div class="aba-painel ativa" data-aba="solicitacoes">
+      <div class="card" style="margin-bottom:18px;">
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="filtro-status">Filtrar por status</label>
+            <select id="filtro-status">
+              <option value="">Todos</option>
+              <option>Recebido</option>
+              <option>Em análise</option>
+              <option>Aguardando informações</option>
+              <option>Em processamento</option>
+              <option>Concluído</option>
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label for="filtro-busca">Buscar por nome, negócio ou nº</label>
+            <input type="text" id="filtro-busca" placeholder="Ex: Maria, Sabores, 12...">
+          </div>
+        </div>
+      </div>
+
+      <div class="painel-layout">
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <table class="tabela-admin">
+            <thead>
+              <tr>
+                <th>#</th><th>Empreendedor</th><th>Negócio</th><th>Status</th><th>Atualizado em</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela-solicitacoes">
+              <tr><td colspan="5" class="texto-suave">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="detalhe-solicitacao" id="detalhe-solicitacao">
+          <p class="texto-suave">Selecione uma solicitação na tabela para ver os detalhes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------- ABA: Sugestões ---------- -->
+    <div class="aba-painel" data-aba="sugestoes">
+      <div class="card" style="padding:0;overflow-x:auto;">
+        <table class="tabela-admin">
+          <thead>
+            <tr><th>Nome</th><th>Categoria</th><th>Bairro</th><th>Contato</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="corpo-tabela-sugestoes">
+            <tr><td colspan="6" class="texto-suave">Carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="rodape-baixo">© 2026 Território Empreendedor — Projeto acadêmico, sem vínculo com órgãos oficiais.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/assistencia.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre — Território Empreendedor</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="logo"><span class="logo-icone">🌱</span> Território Empreendedor</a>
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="cadastro.html">Cadastrar Negócio</a></li>
+        <li><a href="formalizacao.html">Formalização</a></li>
+        <li><a href="assistencia.html">Assistência</a></li>
+        <li><a href="guia.html">Guia</a></li>
+        <li><a href="sobre.html" class="ativo">Sobre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="max-width:760px;">
+    <h1 class="titulo-secao">Sobre o Território Empreendedor</h1>
+    <p>
+      O <strong>Território Empreendedor</strong> é um projeto acadêmico que busca dar visibilidade a comércios
+      e iniciativas de empreendedorismo em regiões periféricas, além de orientar empreendedores no caminho
+      da formalização como MEI. A plataforma conecta moradores, empreendedores e uma equipe de assistência
+      voluntária/estudantil que ajuda a organizar esse processo.
+    </p>
+    <p class="texto-suave">
+      Este é um projeto de demonstração desenvolvido para fins de estudo. Ele não possui vínculo com
+      órgãos governamentais e não substitui os canais oficiais de formalização do MEI.
+    </p>
+  </div>
+</section>
+
+<section class="secao-alt">
+  <div class="container" style="max-width:640px;">
+    <h2 class="titulo-secao">Conhece um comércio que deveria estar no mapa?</h2>
+    <p class="subtitulo-secao">Envie uma sugestão — não é necessário se cadastrar.</p>
+
+    <div id="alerta-sugestao"></div>
+
+    <form id="form-sugestao">
+      <div class="form-grupo">
+        <label for="s_nome">Nome do comércio *</label>
+        <input type="text" id="s_nome" name="nome" required>
+      </div>
+      <div class="form-grupo">
+        <label for="s_categoria">Categoria *</label>
+        <select id="s_categoria" name="categoria" required>
+          <option value="">Selecione...</option>
+          <option>Alimentação</option><option>Beleza</option><option>Vestuário</option>
+          <option>Serviços</option><option>Artesanato</option><option>Tecnologia</option>
+          <option>Educação</option><option>Construção</option><option>Outros</option>
+        </select>
+      </div>
+      <div class="form-grupo">
+        <label for="s_bairro">Bairro</label>
+        <input type="text" id="s_bairro" name="bairro">
+      </div>
+      <div class="form-grupo">
+        <label for="s_descricao">Descrição</label>
+        <textarea id="s_descricao" name="descricao" rows="3" placeholder="O que esse comércio faz ou vende?"></textarea>
+      </div>
+      <div class="form-grupo">
+        <label for="s_contato">Contato <span class="opcional">(opcional)</span></label>
+        <input type="text" id="s_contato" name="contato" placeholder="Telefone, Instagram, etc.">
+      </div>
+      <button type="submit" class="btn btn-primario btn-bloco">Enviar sugestão</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="rodape-grid">
+      <div>
+        <h4>Contato</h4>
+        <p>contato@territorioempreendedor.demo</p>
+        <p>(11) 0000-0000</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <p><a href="mapa.html">Mapa de comércios</a></p>
+        <p><a href="assistencia.html">Assistência jurídica</a></p>
+      </div>
+    </div>
+    <div class="rodape-baixo">© 2026 Território Empreendedor — Projeto acadêmico, sem vínculo com órgãos oficiais.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script>
+  document.getElementById('form-sugestao').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const dados = Object.fromEntries(new FormData(e.target).entries());
+    const alerta = document.getElementById('alerta-sugestao');
+    try {
+      const resultado = await Api.enviarSugestao(dados);
+      alerta.innerHTML = `<div class="alerta alerta-sucesso">${escaparHtml(resultado.mensagem)}</div>`;
+      e.target.reset();
+    } catch (err) {
+      alerta.innerHTML = `<div class="alerta alerta-erro">${escaparHtml(err.message)}</div>`;
+    }
+  });
+</script>
+</body>
+</html>

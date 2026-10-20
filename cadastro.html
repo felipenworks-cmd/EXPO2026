@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastrar meu negócio — Território Empreendedor</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="logo"><span class="logo-icone">🌱</span> Território Empreendedor</a>
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="cadastro.html" class="ativo">Cadastrar Negócio</a></li>
+        <li><a href="formalizacao.html">Formalização</a></li>
+        <li><a href="assistencia.html">Assistência</a></li>
+        <li><a href="guia.html">Guia</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="max-width:760px;">
+    <h1 class="titulo-secao">Cadastrar meu negócio</h1>
+    <p class="subtitulo-secao">Vamos começar. Primeiro precisamos conhecer você — depois, seu negócio.</p>
+
+    <div id="alerta-envio"></div>
+
+    <!-- ---------- Indicador de progresso ---------- -->
+    <div class="etapas-progresso" id="etapas-progresso">
+      <div class="etapa-bolha ativa" data-etapa="1">1. Dados pessoais</div>
+      <div class="etapa-bolha" data-etapa="2">2. Negócio</div>
+      <div class="etapa-bolha" data-etapa="3">3. Atividade</div>
+      <div class="etapa-bolha" data-etapa="4">4. Revisão</div>
+      <div class="etapa-bolha" data-etapa="5">5. Envio</div>
+    </div>
+
+    <form id="form-cadastro" novalidate>
+
+      <!-- ETAPA 1 — Dados pessoais -->
+      <div class="etapa-painel ativa" data-etapa="1">
+        <h3>Agora, conte um pouco sobre você.</h3>
+        <div class="form-grupo">
+          <label for="nome_empreendedor">Nome completo *</label>
+          <input type="text" id="nome_empreendedor" name="nome_empreendedor" required minlength="3">
+          <div class="mensagem-erro">Informe seu nome completo.</div>
+        </div>
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="cpf">CPF *</label>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+            <div class="mensagem-erro">Informe um CPF no formato 000.000.000-00.</div>
+          </div>
+          <div class="form-grupo">
+            <label for="telefone_pessoal">Telefone *</label>
+            <input type="tel" id="telefone_pessoal" name="telefone_pessoal" placeholder="(00) 00000-0000" required>
+            <div class="mensagem-erro">Informe um telefone válido.</div>
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label for="email_pessoal">E-mail *</label>
+          <input type="email" id="email_pessoal" name="email_pessoal" required>
+          <div class="mensagem-erro">Informe um e-mail válido.</div>
+        </div>
+      </div>
+
+      <!-- ETAPA 2 — Dados do negócio -->
+      <div class="etapa-painel" data-etapa="2">
+        <h3>Agora conte um pouco sobre seu negócio.</h3>
+        <div class="form-grupo">
+          <label for="nome_negocio">Nome do negócio *</label>
+          <input type="text" id="nome_negocio" name="nome_negocio" required minlength="2">
+          <div class="mensagem-erro">Informe o nome do negócio.</div>
+        </div>
+        <div class="form-grupo">
+          <label for="categoria">Categoria *</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione...</option>
+            <option>Alimentação</option><option>Beleza</option><option>Vestuário</option>
+            <option>Serviços</option><option>Artesanato</option><option>Tecnologia</option>
+            <option>Educação</option><option>Construção</option><option>Outros</option>
+          </select>
+          <div class="mensagem-erro">Selecione uma categoria.</div>
+        </div>
+        <div class="form-grupo">
+          <label for="descricao">Descrição do negócio</label>
+          <textarea id="descricao" name="descricao" rows="3" placeholder="Conte o que você vende ou oferece..."></textarea>
+        </div>
+
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="endereco">Endereço *</label>
+            <input type="text" id="endereco" name="endereco" required>
+            <div class="mensagem-erro">Informe o endereço.</div>
+          </div>
+          <div class="form-grupo">
+            <label for="numero">Número</label>
+            <input type="text" id="numero" name="numero">
+          </div>
+        </div>
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="bairro">Bairro *</label>
+            <input type="text" id="bairro" name="bairro" required>
+            <div class="mensagem-erro">Informe o bairro.</div>
+          </div>
+          <div class="form-grupo">
+            <label for="cidade">Cidade *</label>
+            <input type="text" id="cidade" name="cidade" required>
+            <div class="mensagem-erro">Informe a cidade.</div>
+          </div>
+        </div>
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="estado">Estado (UF) *</label>
+            <input type="text" id="estado" name="estado" maxlength="2" placeholder="Ex: SP" required>
+            <div class="mensagem-erro">Informe a UF (2 letras).</div>
+          </div>
+          <div class="form-grupo">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000">
+          </div>
+        </div>
+        <div class="form-linha">
+          <div class="form-grupo">
+            <label for="telefone_negocio">Telefone comercial <span class="opcional">(opcional)</span></label>
+            <input type="tel" id="telefone_negocio" name="telefone_negocio">
+          </div>
+          <div class="form-grupo">
+            <label for="email_negocio">E-mail comercial <span class="opcional">(opcional)</span></label>
+            <input type="email" id="email_negocio" name="email_negocio">
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label for="redes_sociais">Redes sociais <span class="opcional">(opcional)</span></label>
+          <input type="text" id="redes_sociais" name="redes_sociais" placeholder="@seunegocio">
+        </div>
+      </div>
+
+      <!-- ETAPA 3 — Atividade econômica -->
+      <div class="etapa-painel" data-etapa="3">
+        <h3>Fale sobre a atividade econômica do seu negócio.</h3>
+        <div class="form-grupo">
+          <label for="atividade_principal">Atividade principal *</label>
+          <input type="text" id="atividade_principal" name="atividade_principal" required placeholder="Ex: Venda de alimentos preparados">
+          <div class="mensagem-erro">Informe a atividade principal.</div>
+        </div>
+        <div class="form-grupo">
+          <label for="atividade_descricao">Descrição da atividade</label>
+          <textarea id="atividade_descricao" name="atividade_descricao" rows="3" placeholder="Descreva com mais detalhes o que é feito no dia a dia."></textarea>
+        </div>
+        <div class="form-grupo">
+          <label for="funcionamento">Funcionamento do negócio</label>
+          <input type="text" id="funcionamento" name="funcionamento" placeholder="Ex: Segunda a sábado, das 9h às 18h">
+        </div>
+      </div>
+
+      <!-- ETAPA 4 — Revisão -->
+      <div class="etapa-painel" data-etapa="4">
+        <h3>Confira suas informações antes de enviar.</h3>
+        <div id="area-revisao"></div>
+      </div>
+
+      <!-- ETAPA 5 — Envio -->
+      <div class="etapa-painel" data-etapa="5">
+        <div id="area-envio" class="text-centro">
+          <p>Tudo pronto! Clique abaixo para concluir seu cadastro e iniciar o processo de formalização.</p>
+        </div>
+      </div>
+
+      <div class="acoes-form">
+        <button type="button" class="btn btn-outline" id="btn-voltar" disabled>Voltar</button>
+        <button type="button" class="btn btn-primario" id="btn-avancar">Avançar</button>
+        <button type="submit" class="btn btn-primario oculto" id="btn-enviar">Cadastro enviado com sucesso ✓</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="rodape-baixo">© 2026 Território Empreendedor — Projeto acadêmico, sem vínculo com órgãos oficiais.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/cadastro.js"></script>
+</body>
+</html>
